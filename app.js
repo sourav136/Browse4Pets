@@ -11,14 +11,22 @@ const resizeObserver = new ResizeObserver(entries => {
     let roundWidth = Math.floor(width);
     overLap.style.width = `${roundWidth}px`;
 
-    overLap.style.top = `-${height / 2}px`;
+    let elementHeightValue = height / 2;
+
+    overLap.style.top = `-${elementHeightValue}px`;
+
+    let smMargin = (elementHeightValue + 76) / 16;
+    let mdMargin = (elementHeightValue + 100) / 16;
+    
+    let smPadding = (elementHeightValue + 112) / 16;
+    let mdPadding = (elementHeightValue + 140) / 16;
 
     if (width <= 768) {
-      topelm.style.marginBottom = `${height / 2 + 76}px`;
-      container.style.paddingTop = `${height / 2 + 112}px`;
+      topelm.style.marginBottom = `${smMargin}rem`;
+      container.style.paddingTop = `${smPadding}rem`;
     } else {
-      topelm.style.marginBottom = `${height / 2 + 100}px`;
-      container.style.paddingTop = `${height / 2 + 140}px`;
+      topelm.style.marginBottom = `${mdMargin}rem`;
+      container.style.paddingTop = `${mdPadding}rem`;
     }
   }
 });
@@ -26,3 +34,4 @@ const resizeObserver = new ResizeObserver(entries => {
 window.addEventListener("load", () => {
   resizeObserver.observe(container);
 });
+
